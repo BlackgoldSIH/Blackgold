@@ -1,0 +1,77 @@
+.topbar_content {
+    /* width: calc(100vw - 24vw - 5px); */
+    width: calc(100vw - 18vw - 20px );
+    height: 50px;
+    position: fixed;
+    /* top: 0;
+    right: 0; */
+    background-color: #fff;
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+
+    z-index: 10000;
+}
+
+.topbar_menu i {
+    font-size: 22px;
+    color: #111;
+    cursor: pointer;
+}
+
+.topbar_menu_two {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+
+
+.topbar_menu_two i {
+    color: #111;
+    font-size: 20px;
+}
+
+.topbar_search {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.topbar_menu_two input {
+    background: none;
+    outline: none;
+    border: transparent;
+}
+
+.topbar_hr {
+    background-color: rgb(197, 197, 197);
+    height: 30px;
+    width: 3px;
+}
+
+.topbar_account {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.topbar_account i {
+    font-size: 30px;
+    font-weight: 200;
+}
+.topbar_account p {
+    font-size: 14px;
+    color: #111;
+    line-height: 8px;
+}
+.topbar_account span {
+    font-size: 12px;
+    color: grey;
+}
+
+.topbar_account .topbar_more i {
+    color: #111;
+    font-size: 18px;
+}

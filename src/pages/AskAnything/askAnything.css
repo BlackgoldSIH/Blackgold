@@ -1,0 +1,134 @@
+/* General Styles */
+.help-dashboard {
+    margin-top: 100px;
+    font-family: "Arial", sans-serif;
+    padding: 20px;
+    background-color: #f6f6fc;
+    color: #333;
+    max-width: 100%;
+    /* margin: 0 auto; */
+  }
+  
+  /* Header Section */
+  .help-header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .help-header h1 {
+    font-size: 36px;
+    color: #7b4bff;
+  }
+  
+  .help-header h1 span {
+    color: #4c52ff;
+  }
+  
+  .help-header p {
+    font-size: 20px;
+    color: #9b9b9b;
+  }
+  
+  /* Question Cards */
+  .question-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-bottom: 30px;
+  }
+  
+  .card {
+    background-color: #f8f8ff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .card p {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 10px;
+  }
+  
+  .card .icon {
+    font-size: 20px;
+    color: #9b9bff;
+  }
+  
+  /* Chat Response */
+  .chat-response {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .question {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .bubble {
+    width: 30px;
+    height: 30px;
+    background-color: #4c52ff;
+    color: #fff;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .question p {
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .answer {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 20px;
+  }
+  
+  .answer .star-icon {
+    font-size: 20px;
+    color: #7b4bff;
+    margin-right: 10px;
+  }
+  
+  .answer p {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  /* Typing Box */
+  .typing-box {
+    margin-top: 30px;
+    text-align: center;
+  }
+  
+  .input-box {
+    width: 100%;
+    padding: 15px;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .input-box:focus {
+    outline: none;
+    border-color: #7b4bff;
+    box-shadow: 0 0 8px rgba(123, 75, 255, 0.5);
+  }
+  

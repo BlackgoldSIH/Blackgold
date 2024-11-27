@@ -1,0 +1,50 @@
+.sidebar_content {
+    width: 18vw;
+    position: fixed;
+    background-color: #474656;
+    color: #fff;
+    height: 100vh; /* Full viewport height */
+    /* padding: 12px; */
+    display: flex;
+    flex-direction: column; /* Ensure vertical layout */
+    
+}
+
+.sidebar_heading img {
+    width: 150px;
+    margin-bottom: 30px;
+    padding: 12px;
+}
+
+.sidebar_menus {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Space between top and bottom menus */
+    flex-grow: 1; /* Allows the menus to grow and fill the space */
+    gap: 20px; /* Adjusted for better layout control */
+    padding: 12px;
+}
+
+.top_menus, .bottom_menus {
+    flex: 0.37; /* Ensures the menus maintain their size */
+}
+
+.sidebar_menus li {
+    font-size: 16px;
+    padding-left: 20px;
+    padding: 10px 0 10px 20px;
+    cursor: pointer;
+    color: #fff;
+    
+}
+
+.sidebar_menus li.active {
+    background-color: #fff;
+    color: #474656;
+    border-radius: 10px;
+}
+.sidebar_menus li:hover {
+    background-color: #fff;
+    color: #474656;
+    border-radius: 10px;
+}
