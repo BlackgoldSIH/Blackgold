@@ -1,0 +1,40 @@
+.home_content {
+    display: flex;
+    align-items: start;
+    /* justify-content: ; */
+    /* flex-direction: row; */
+}
+.container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+.home_content .home_left {
+    width: 18vw;
+    position: sticky;
+    top: 0;
+    left: 0;
+}
+
+
+.home_content .home_right {
+    width: calc( 100vw - 20vw );
+    position: sticky;
+    /* top: 0; */
+    /* right: 0; */
+}
+
+.projects_cards {
+    
+    margin-top: 50px;
+    overflow: hidden;
+    /* margin-left: 300px; */
+    padding: 50px 10px;
+    display: flex;
+    align-items: start;
+    flex-wrap: wrap;
+    gap: 20px;
+}

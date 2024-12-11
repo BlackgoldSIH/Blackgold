@@ -10,22 +10,68 @@ import Reports from './pages/ReportsAndDocs/Reports';
 import Workflow from './pages/Workflow/Workflow';
 import AskAnything from './pages/AskAnything/AskAnything';
 import MessageGroup from './pages/Chat/MessageGroup';
+import AdminBase from './users/admin/AdminBase';
+import AdminHome from './users/admin/adminHome';
+import InvestBase from './users/investigator/investBase';
 
+import ProjectProposalForm from './users/investigator/addProposal';
+import ViewProjectProposalForm from './users/admin/viewProposals';
+import InvestHome from './users/investigator/investHome';
 function App() {
   const [count, setCount] = useState(0)
-
+  
   const router = createBrowserRouter([
     {
-      path: '/',
+      path: '/admin-home',
       element: (
         <>
-          {/* <Home /> */}
+          <AdminBase PageContent={<AdminHome />}/>
+        </>
+      )
+    },
+    {
+      path: '/research-home',
+      element: (
+        <>
           <Base PageContent={<Home />} />
         </>
       )
     },
     {
-      path: '/login',
+      path: '/invest-home',
+      element: (
+        <>
+          <InvestBase PageContent={<InvestHome />} />
+        </>
+      )
+    },
+    {
+      path: '/review-home',
+      element: (
+        <>
+          <Base PageContent={<Home />} />
+        </>
+      )
+    },
+    {
+      path: '/addProposal',
+      element: (
+        <>
+          <ProjectProposalForm />
+        </>
+      )
+    },
+    {
+      path: '/viewProposal',
+      element: (
+        <>
+          <ViewProjectProposalForm />
+        </>
+      )
+    },
+
+    {
+      path: '/',
       element: (
         <Signup />
       )

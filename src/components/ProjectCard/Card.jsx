@@ -1,7 +1,8 @@
 import React from 'react'
 import './card.css'
 import CustomCircularProgress from './CustomCircularProgress'
-function Card() {
+function Card(item) {
+    
     return (
         <div className="project_card">
             <div className="product_img">
@@ -10,20 +11,20 @@ function Card() {
             <div className="product_info">
                 <div className="product_title">
                     <div className="product_name_id">
-                        <h1>Product Title 1</h1>
-                        <span>ID: 32565432</span>
+                        <h1>{item.data.title}</h1>
+                        <span>ID: #{item.data.id}</span>
                     </div>
                     <div className="product_process">
-                        <span>Processing</span>
+                        <span>{item.data.status}</span>
                     </div>
                 </div>
                 <div className="product_date_cicle">
                     <div className="product_date">
-                        <p>Start Date: <span>15 Nov 2024</span></p>
-                        <p>End Date: <span>15 Jan 2025</span></p>
+                        <p>Start Date: <span>{item.data.start_date}</span></p>
+                        <p>End Date: <span>{item.data.end_date}</span></p>
                     </div>
                     <div className="product_circle">
-                        <CustomCircularProgress value={75} primaryColor="#ddd" secondaryColor="#4caf50" />
+                        <CustomCircularProgress value={item.data.current_progress_percentage} primaryColor="#ddd" secondaryColor="#4caf50" />
                         <div className="progress_color">
                             <div>
                                 <div className="col_one"></div> <p>Completed</p>

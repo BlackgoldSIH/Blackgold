@@ -12,13 +12,8 @@ import ProjectCards from '../../components/ProjectCard/ProjectCards'
 function Home() {
   return (
     <div className="projects_container">
-      <ProjectCards />
+      <ProjectCards item={{"id" : 0}}/>
 
-      {/* <ManageProjects /> */}
-      {/* <Reports /> */}
-      {/* <AdminComments />
-              <SubmitRevision />
-              <SubmissionHistory /> */}
 
     </div>
   )
