@@ -1,134 +1,204 @@
-/* General Styles */
-.help-dashboard {
-    margin-top: 100px;
-    font-family: "Arial", sans-serif;
-    padding: 20px;
-    background-color: #f6f6fc;
-    color: #333;
-    max-width: 100%;
-    /* margin: 0 auto; */
+/* Ensures the whole page takes up 100% height */
+body, html, .container {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* Full viewport height container */
+.container_ask {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100vh;
+  background-color: #f6f6fc;
+  padding: 20px;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  /* Remove the max-width constraint */
+  /* max-width: 1200px; */
+  margin: 0 auto;
+}
+
+/* Header section */
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  font-size: 35px;
+  color: #7b4bff;
+}
+
+.highlight {
+  color: #4c52ff;
+}
+
+.header p {
+  font-size: 18px;
+  color: #9b9b9b;
+}
+
+.star { 
+  display: flex;  
+  bottom: auto;
+}
+
+/* Cards Section */
+.cards {
+  display: flex;
+  overflow-x: auto;
+  margin-bottom: 30px;
+  justify-content: center;
+}
+
+.card {
+  background-color: #f8f8ff;
+  padding: 25px;
+  border-radius: 12px;
+  width: 230px;
+  margin-right: 30px;
+  margin-bottom: 10px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.card:hover {
+  background-color: #e0e0ff;
+}
+
+.card-text {
+  font-size: 16px;
+  color: #555;
+}
+
+/* Chat response box */
+.chat-response {
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+  width: 96%;
+}
+
+.question {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.bubble {
+  width: 40px;
+  height: 40px;
+  background-color: #4c52ff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  margin-right: 20px;
+}
+
+.answer {
+  display: flex;
+  align-items: flex-start;
+}
+
+.star-icon {
+  font-size: 20px;
+  color: #7b4bff;
+  margin-right: 15px;
+}
+
+.answer-text {
+  font-size: 16px;
+  color: #666;
+  flex-grow: 1;
+  line-height: 1.5;
+}
+
+/* Typing box */
+.typing-box {
+  margin-top: auto; /* This will push the typing box to the bottom */
+  text-align: center;
+  width: 95%;
+}
+  .h { 
+      display: flex; 
+      flex-direction: row;
+      margin-left: 30px;
+  } 
+.input-box {
+  width: 100%;
+  padding: 15px;
+  border-radius: 25px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  outline: none;
+}
+
+.input-box:focus {
+  border-color: #4c52ff;
+}
+
+.chat-bubble {
+  display: flex;
+  flex-direction: column;
+  /* align-items: end; */
+  /* background-color: grey; */
+}
+.chat-user-msg {
+  align-self: end;
+  background-color: #4c52ff;
+  margin: 10px;
+  padding: 10px;
+  width: auto;
+  text-align: end;
+  color: #f8f8ff;
+  border-radius: 25px;
+
+}
+.chat-user-bot {
+  align-self: flex-start;
+  border-radius: 25px;
+  background-color: #4c52ff;
+  margin: 10px;
+  padding: 10px;
+  object-fit: contain;
+  width: auto;
+  color: #f8f8ff;
+}
+
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  /* Adjust layout for smaller screens */
+  .cards {
+    flex-direction: column;
+    overflow-x: hidden;
   }
-  
-  /* Header Section */
-  .help-header {
-    text-align: center;
-    margin-bottom: 30px;
-  }
-  
-  .help-header h1 {
-    font-size: 36px;
-    color: #7b4bff;
-  }
-  
-  .help-header h1 span {
-    color: #4c52ff;
-  }
-  
-  .help-header p {
-    font-size: 20px;
-    color: #9b9b9b;
-  }
-  
-  /* Question Cards */
-  .question-cards {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
-    margin-bottom: 30px;
-  }
-  
+
   .card {
-    background-color: #f8f8ff;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  
-  .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  }
-  
-  .card p {
-    font-size: 14px;
-    color: #555;
-    margin-bottom: 10px;
-  }
-  
-  .card .icon {
-    font-size: 20px;
-    color: #9b9bff;
-  }
-  
-  /* Chat Response */
-  .chat-response {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .question {
-    display: flex;
-    align-items: center;
+    width: 100%;
+    margin-right: 0;
     margin-bottom: 20px;
   }
-  
-  .bubble {
-    width: 30px;
-    height: 30px;
-    background-color: #4c52ff;
-    color: #fff;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    margin-right: 10px;
+
+  .chat-response {
+    width: 92%;
   }
-  
-  .question p {
-    font-size: 16px;
-    color: #333;
-  }
-  
-  .answer {
-    display: flex;
-    align-items: flex-start;
-    margin-top: 20px;
-  }
-  
-  .answer .star-icon {
-    font-size: 20px;
-    color: #7b4bff;
-    margin-right: 10px;
-  }
-  
-  .answer p {
-    font-size: 14px;
-    color: #666;
-  }
-  
-  /* Typing Box */
+
   .typing-box {
-    margin-top: 30px;
-    text-align: center;
+    width: 98%;
   }
-  
-  .input-box {
-    width: 100%;
-    padding: 15px;
-    border-radius: 25px;
-    border: 1px solid #ccc;
-    font-size: 14px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .input-box:focus {
-    outline: none;
-    border-color: #7b4bff;
-    box-shadow: 0 0 8px rgba(123, 75, 255, 0.5);
-  }
-  
+}

@@ -1,0 +1,95 @@
+.fund-requisition {
+    max-width: 800px;
+    margin: 100px auto auto auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  .header {
+    text-align: center;
+    font-weight: bold;
+    font-size: 24px;
+  }
+  
+  .label {
+    display: block;
+    margin: 10px 0 5px;
+  }
+  
+  .input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .file-input {
+    margin-bottom: 10px;
+  }
+  
+  .table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+  }
+  
+  .th {
+    padding: 10px;
+    background-color: #e0e0e0;
+    border: 1px solid #ccc;
+    text-align: left;
+  }
+  
+  .td {
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  .notes {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+  }
+  
+  .signature-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .signature-box {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .signature-label {
+    display: block;
+    margin: 5px 0;
+  }
+  
+  .button {
+    width: 100%;
+    padding: 10px;
+    background-color: #000000;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  @media (min-width: 768px) {
+    .signature-section {
+      flex-direction: row;
+    }
+  
+    .signature-box {
+      width: 48%;
+      margin-bottom: 0;
+    }
+  }

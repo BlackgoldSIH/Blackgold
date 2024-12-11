@@ -1,0 +1,66 @@
+.finance_container {
+    padding-top: 100px;
+  }
+  
+  .dashboard-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; /* Default: 3 columns */
+    grid-template-rows: auto auto;
+    gap: 1rem;
+    padding: 2rem;
+  
+    /* Tablets and Small Devices (768px and below) */
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr 1fr; /* Switch to 2 columns */
+      padding: 1.5rem;
+      gap: 0.75rem;
+    }
+  
+    /* Smartphones (480px and below) */
+    @media (max-width: 480px) {
+      grid-template-columns: 1fr; /* Single column layout */
+      padding: 1rem;
+      gap: 0.5rem;
+    }
+  }
+  
+  .card,
+  .bar-graph-container,
+  .timeline-container {
+    background: #2b2b3a;
+    color: #fff;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  
+    /* Adjust padding for smaller screens */
+    @media (max-width: 768px) {
+      padding: 1rem;
+    }
+  
+    @media (max-width: 480px) {
+      padding: 0.75rem; /* Compact padding for smartphones */
+    }
+  }
+  
+  .timeline-container {
+    background: #d9d9d9;
+    color: #333;
+  
+    @media (max-width: 480px) {
+      padding: 0.75rem;
+    }
+  }
+  
+  .finance_container h1, h2 {
+    font-size: 2rem;
+  
+    @media (max-width: 768px) {
+      font-size: 1.5rem;
+    }
+  
+    @media (max-width: 480px) {
+      font-size: 1.2rem; /* Smaller headings on smartphones */
+    }
+  }

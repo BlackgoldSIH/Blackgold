@@ -6,7 +6,7 @@ import Signup from './pages/Signup/Signup';
 import Home from './pages/Home/Home'
 import Base from './pages/Home/Base';
 import Feedback from './pages/Feedback/Feedback';
-import Reports from './pages/ReportsAndDocs/Reports';
+import Reports from './pages/Forms/Reports';
 import Workflow from './pages/Workflow/Workflow';
 import AskAnything from './pages/AskAnything/AskAnything';
 import MessageGroup from './pages/Chat/MessageGroup';
@@ -18,6 +18,9 @@ import ProjectProposalForm from './users/investigator/addProposal';
 import ViewProjectProposalForm from './users/admin/viewProposals';
 import InvestHome from './users/investigator/investHome';
 import ProjectDetails from './pages/ProjectInfo/projectSummary';
+import ProjectBase from './pages/ProjectInfo/ProjectBase';
+import FinanceDashboard from './pages/ProjectInfo/Finance';
+import FundRequisition from './pages/Forms/MainForms/fundrequisation';
 function App() {
   const [count, setCount] = useState(0)
   
@@ -50,7 +53,7 @@ function App() {
       path: '/projectSummary/:projectid',
       element: (
         <>
-          <InvestBase PageContent={<ProjectDetails />} />
+          <ProjectBase PageContent={<ProjectDetails />} />
         </>
       )
     },
@@ -100,10 +103,18 @@ function App() {
       )
     },
     {
-      path: '/reportsDocs',
+      path: '/reportsDocs/:projectid',
       element: (
         <>
-          <Base PageContent={<Reports />} />
+          <ProjectBase PageContent={<Reports />} />
+        </>
+      )
+    },
+    {
+      path: '/fundrequestion',
+      element: (
+        <>
+          <ProjectBase PageContent={<FundRequisition />} />
         </>
       )
     },
@@ -119,7 +130,15 @@ function App() {
       path: '/askAnything',
       element: (
         <>
-          <Base PageContent={<AskAnything />} />
+          <InvestBase PageContent={<AskAnything />} />
+        </>
+      )
+    },
+    {
+      path: '/finances/:projectid',
+      element: (
+        <>
+          <ProjectBase PageContent={<FinanceDashboard />} />
         </>
       )
     },

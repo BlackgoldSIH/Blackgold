@@ -1,18 +1,22 @@
 import React from 'react';
 import './utils.css'; // Import the CSS file for styling
 
-const FormCard = () => {
+const FormCard = ({obj}) => {
     return (
         <div className="form_card">
             <div className="form_card_header">
-                <h2>Form 1</h2>
-                <span className="form_card_status">Completed</span>
+                <h2>{obj.title}</h2>
+                <span className="form_card_status">{obj.status}</span>
             </div>
             <hr className="form_card_divider" />
             <p className="form_card_description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                {obj.description}
             </p>
+            <div className="temp" style={{display:"flex",justifyContent:"space-between"}}>
+            <a href="#" className="form_card_download">Fill Form</a>
             <a href="#" className="form_card_download">Download</a>
+
+            </div>
         </div>
     );
 };

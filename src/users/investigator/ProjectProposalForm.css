@@ -1,50 +1,149 @@
+/* General container styling */
 .container {
-    max-width: 100%;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
+  width: 100%;
+  max-width: 800px; /* Slightly reduced for desktop for better balance */
+  margin: 50px auto; /* Center alignment */
+  padding: 40px;
+  background-color: #ffffff; /* Clean white background */
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow for depth */
+  font-family: 'Roboto', sans-serif;
+  overflow: hidden; /* Prevent content overflow */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Heading styling */
+.heading {
+  text-align: center;
+  font-size: 32px; /* Slightly larger text for visibility */
+  font-weight: bold;
+  margin-bottom: 30px;
+  color: #343a40;
+}
+
+/* Form group styling */
+.form-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 800px; /* Limit form width for better readability */
+  margin: 0 auto; /* Center align fields */
+}
+
+/* Label styling */
+.label {
+  font-size: 15px; /* Slightly smaller labels for balance */
+  font-weight: 500;
+  margin-left: 12px;
+  margin-bottom: 6px;
+  color: #495057;
+}
+
+/* Input and select styling */
+.input,
+select.input {
+  width: 90%;
+  margin-left: 12px;
+  padding: 14px;
+  margin-right: 14px;
+  font-size: 16px;
+  color: #212529;
+  background-color: #f8f9fa; /* Slightly lighter background */
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.input:focus,
+select.input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
+}
+
+/* Dropdown-specific styles */
+select.input {
+  appearance: none;
+  margin-bottom: 10px;
+  margin-top: 10px ; 
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23333333' d='M2 0L0 2h4z'/%3E%3C/svg%3E")
+    no-repeat right 14px center;
+  background-size: 12px;
+}
+
+/* Button styling */
+.submit-button {
+  width: 40%; /* Ensures the button spans the container's width */
+  margin: 20px auto; /* Centers the button horizontally */
+  padding: 16px;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #ffffff;
+  background-color: #000000;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: block; /* Ensure it's treated as a block-level element */
+}
+
+.submit-button:hover {
+  background-color: #333333;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .container {
+    max-width: 90%; /* Wider layout for tablets */
+    padding: 30px;
   }
-  
-  .heading {
-    text-align: center;
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
-  }
-  
+
   .form-group {
-    margin-bottom: 16px;
+    max-width: 90%; /* Remove width restriction */
+
   }
-  
-  .label {
-    display: block;
-    font-weight: 600;
-    margin-bottom: 8px;
+
+  .heading {
+    font-size: 28px;
   }
-  
+
   .input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
+    font-size: 14px;
+    margin-bottom: 15px;
   }
-  
+
   .submit-button {
-    width: 100%;
-    background-color: #000;
-    color: #fff;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    border-radius: 4px;
-    text-align: center;
-    cursor: pointer;
-    margin-top: 20px;
+    font-size: 14px;
+    width:400px
   }
-  
-  .submit-button:hover {
-    background-color: #555;
+}
+
+@media (max-width: 768px) {
+  .container {
+    max-width: 100%;
+    padding: 20px;
+    box-shadow: none; /* Simplified design for mobile */
   }
-  
+
+  .heading {
+    font-size: 24px;
+  }
+
+  .form-group {
+    max-width: 100%; /* Ensure full width */
+  }
+
+  .input {
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  .submit-button {
+    padding: 12px;
+    font-size: 14px;
+  }
+}
