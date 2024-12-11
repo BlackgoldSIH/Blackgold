@@ -17,6 +17,7 @@ import InvestBase from './users/investigator/investBase';
 import ProjectProposalForm from './users/investigator/addProposal';
 import ViewProjectProposalForm from './users/admin/viewProposals';
 import InvestHome from './users/investigator/investHome';
+import ProjectDetails from './pages/ProjectInfo/projectSummary';
 function App() {
   const [count, setCount] = useState(0)
   
@@ -42,6 +43,14 @@ function App() {
       element: (
         <>
           <InvestBase PageContent={<InvestHome />} />
+        </>
+      )
+    },
+    {
+      path: '/projectSummary/:projectid',
+      element: (
+        <>
+          <InvestBase PageContent={<ProjectDetails />} />
         </>
       )
     },

@@ -1,8 +1,12 @@
 import React from 'react'
 import './card.css'
 import CustomCircularProgress from './CustomCircularProgress'
+// import { useNavigate } from 'react-router-dom';
 function Card(item) {
-    
+    const navigate = useNavigate();
+    const handleClick=(projectId)=>{
+        navigate(`/projectSummary/${projectId}`)
+    }
     return (
         <div className="project_card">
             <div className="product_img">
@@ -36,11 +40,12 @@ function Card(item) {
                     </div>
                 </div>
                 <div className="product_view">
-                    <a href="">View Summary</a>
+                    <a href="" onClick={()=>{handleClick(item.data.id)}}>View Summary</a>
                 </div>
             </div>
         </div>
     )
 }
+import { useNavigate, useNavigation } from 'react-router-dom'
 
 export default Card
