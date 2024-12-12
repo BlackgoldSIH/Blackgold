@@ -18,9 +18,11 @@ function ProjectsSidebar(params) {
     return (
         <div className="container">
             <div className="sidebar_content">
+                <Link to={"/"}>
                 <div className="sidebar_heading">
                     <img src={assets.logo} alt="" />
                 </div>
+                </Link>
                 <div className="sidebar_menus">
                     <div className="top_menus">
                         <ul>
@@ -30,7 +32,7 @@ function ProjectsSidebar(params) {
                                     className={activeItem === 'Manage Projects' ? 'active' : ''}
                                     onClick={() => handleClick('Manage Projects')}
                                 >
-                                    <i className="ri-folder-check-fill"></i> Summary
+                                    <i className="ri-folder-check-fill"></i> Project Overview
                                 </li>
                             </Link>
 
@@ -50,6 +52,22 @@ function ProjectsSidebar(params) {
                                     onClick={() => handleClick('Reports & Docs')}
                                 >
                                     <i className="ri-survey-line"></i> Report and Docs
+                                </li>
+                            </Link>
+                            <Link to={`/notifications/${projectid}/`}>
+                                <li
+                                    className={activeItem === 'Notifications' ? 'active' : ''}
+                                    onClick={() => handleClick('Notifications')}
+                                >
+                                    <i className="ri-survey-line"></i> Notifications
+                                </li>
+                            </Link>
+                            <Link to={`/ganttChat/${projectid}/`}>
+                                <li
+                                    className={activeItem === 'Gantt Chart' ? 'active' : ''}
+                                    onClick={() => handleClick('Gantt Chart')}
+                                >
+                                    <i className="ri-survey-line"></i> Gantt Chart
                                 </li>
                             </Link>
 

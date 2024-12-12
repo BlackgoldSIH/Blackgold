@@ -36,8 +36,10 @@
     border-radius: 10px;
     padding: 10px;
 }
-.signup_btn a{
+.signup_btn button{
     color: #fff;
+    background: transparent;
+    outline: none;
 }
 
 .signup_admin {

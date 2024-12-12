@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import CustomInput from '../../components/Utils/CustomInput'
 import './signup.css'
 import { assets } from '../../assets/assets'
@@ -35,7 +35,8 @@ function Signup() {
       const data = response.data
       localStorage.setItem('token', data.token) // Save token to localStorage
       localStorage.setItem('id',data.id)
-      // navigate('/home') // Redirect to home
+      // navigate('/') 
+      window.location.reload()
     } catch (error) {
       setError('An error occurred. Please try again later.')
     }
@@ -147,7 +148,7 @@ function Signup() {
               </div>
 
               <div className="signup_admin">
-                <p>Not an Investigator? <a href="#">Admin Login</a></p>
+                <p>Not an User? <Link to="/createAccount">Create account</Link></p>
               </div>
             </form>
           </div>

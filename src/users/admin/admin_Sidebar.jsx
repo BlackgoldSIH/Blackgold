@@ -8,7 +8,6 @@ import { Link } from 'react-router-dom'
 
 function AdminSidebar() {
     const [activeItem, setActiveItem] = useState('Manage Projects');
-
     const handleClick = (item) => {
         setActiveItem(item);
     };
@@ -29,6 +28,14 @@ function AdminSidebar() {
                                     <i className="ri-folder-check-fill"></i> Manage Projects
                                 </li>
                             </Link>
+                            <Link to='/addProjectAdmin'>
+                                <li
+                                    className={activeItem === 'Add Project' ? 'active' : ''}
+                                    onClick={() => handleClick('Add Project')}
+                                >
+                                    <i className="ri-folder-check-fill"></i> Add Project
+                                </li>
+                            </Link>
 
                             <Link to='/viewProposal' >
                                 <li
@@ -40,19 +47,36 @@ function AdminSidebar() {
                             </Link>
 
 
-                            <Link to='/reportsDocs'>
+                            {/* <Link to='/addInvest'>
                                 <li
                                     className={activeItem === 'Reports & Docs' ? 'active' : ''}
                                     onClick={() => handleClick('Reports & Docs')}
                                 >
                                     <i className="ri-survey-line"></i> Add investigator
                                 </li>
+                            </Link> */}
+
+                            <Link to='/addTimeLine'>
+                                <li
+                                    className={activeItem === 'Add TimeLine' ? 'active' : ''}
+                                    onClick={() => handleClick('Add TimeLine')}
+                                >
+                                    <i className="ri-survey-line"></i> Add TimeLine
+                                </li>
+                            </Link>
+                            <Link to='/addFunds'>
+                                <li
+                                    className={activeItem === 'Add Fund' ? 'active' : ''}
+                                    onClick={() => handleClick('Add Fund')}
+                                >
+                                    <i className="ri-survey-line"></i> Add Fund
+                                </li>
                             </Link>
 
 
 
 
-                            <Link to='/askAnything'>
+                            <Link to='/askAnythingadmin'>
                                 <li
                                     className={activeItem === 'Ask Anything' ? 'active' : ''}
                                     onClick={() => handleClick('Ask Anything')}
@@ -64,18 +88,21 @@ function AdminSidebar() {
                     </div>
                     <div className="bottom_menus">
                         <ul>
+                            <Link to="/helpadmin">
                             <li
                                 className={activeItem === 'Help & Support' ? 'active' : ''}
                                 onClick={() => handleClick('Help & Support')}
                             >
                                 <i className="ri-progress-1-line"></i> Help & Support
                             </li>
+                            </Link>
+                            <Link to="/securityadmin">
                             <li
                                 className={activeItem === 'Security' ? 'active' : ''}
                                 onClick={() => handleClick('Security')}
                             >
                                 <i className="ri-survey-line"></i> Security
-                            </li>
+                            </li></Link>
                             <li
                                 className={activeItem === 'Settings' ? 'active' : ''}
                                 onClick={() => handleClick('Settings')}

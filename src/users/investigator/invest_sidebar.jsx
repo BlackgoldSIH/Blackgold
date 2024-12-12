@@ -41,7 +41,7 @@ function InvestSidebar() {
                             </Link>
 
 
-                            <Link to='/askAnything'>
+                            <Link to='/askAnythinginvest'>
                                 <li
                                     className={activeItem === 'Ask Anything' ? 'active' : ''}
                                     onClick={() => handleClick('Ask Anything')}
@@ -53,18 +53,22 @@ function InvestSidebar() {
                     </div>
                     <div className="bottom_menus">
                         <ul>
+                            <Link to="/helpinvest">
                             <li
                                 className={activeItem === 'Help & Support' ? 'active' : ''}
                                 onClick={() => handleClick('Help & Support')}
                             >
                                 <i className="ri-progress-1-line"></i> Help & Support
                             </li>
+                            </Link>
+                            <Link to="/securityinvest">
                             <li
                                 className={activeItem === 'Security' ? 'active' : ''}
                                 onClick={() => handleClick('Security')}
                             >
                                 <i className="ri-survey-line"></i> Security
                             </li>
+                            </Link>
                             <li
                                 className={activeItem === 'Settings' ? 'active' : ''}
                                 onClick={() => handleClick('Settings')}

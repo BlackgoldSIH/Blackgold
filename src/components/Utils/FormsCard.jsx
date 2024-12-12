@@ -13,7 +13,7 @@ const FormCard = ({obj}) => {
                 {obj.description}
             </p>
             <div className="temp" style={{display:"flex",justifyContent:"space-between"}}>
-            <a href="#" className="form_card_download">Fill Form</a>
+            <a href={`/${obj.path}/`} className="form_card_download">Fill Form</a>
             <a href="#" className="form_card_download">Download</a>
 
             </div>

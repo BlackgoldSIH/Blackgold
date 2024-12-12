@@ -78,7 +78,7 @@ const ProjectProposalForm = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container" style={{"margin-top":"100px"}}>
       <h1 className="heading">Project Proposal for S&T Grant of MOC</h1>
       <form onSubmit={handleSubmit}>
         {Object.keys(formData).map((field, index) => (

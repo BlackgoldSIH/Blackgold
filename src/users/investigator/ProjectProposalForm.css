@@ -1,5 +1,6 @@
 /* General container styling */
 .container {
+  
   width: 100%;
   max-width: 800px; /* Slightly reduced for desktop for better balance */
   margin: 50px auto; /* Center alignment */

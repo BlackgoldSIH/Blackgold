@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 import "./reports.css";
-
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 const FileManagement = () => {
+  const {projectid} = useParams();
+  const [fileName, setFileName] = useState("");
+  const [fileDescription, setFileDescription] = useState("");
+  const [selectedFile, setSelectedFile] = useState(null);
+ 
   const files = [
     { name: "Project 1.pdf", size: "25 MB", date: "2025/18/16", permission: "Investigator", icon: "📄" },
     { name: "Invoice Nov 17.doc", size: "16 MB", date: "2025/18/16", permission: "View Only", icon: "📄" },
@@ -11,6 +18,13 @@ const FileManagement = () => {
     { name: "Styles.css", size: "1.5 GB", date: "2025/18/16", permission: "Investigator", icon: "📄" },
     { name: "CheatSheet.txt", size: "889 KB", date: "2025/18/16", permission: "View Only", icon: "📄" },
   ];
+  const [allData,setAllData] = useState(files)
+  useEffect(()=>{
+    const getData = async ()=>{
+      const response = axios.post("http://127.0.0.1:8000/api/accounts/reportsproject/",{"id":projectid});
+      console.log(response)
+    }
+  },[])
 
   const overview = {
     totalReviews: 198,
@@ -20,14 +34,53 @@ const FileManagement = () => {
     delete: 2,
   };
 
+  const handleFileUpload = async () => {
+    if (!fileName || !fileDescription || !selectedFile) {
+      alert("Please fill in all fields and select a file.");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("id",projectid);
+    formData.append("name", fileName);
+    formData.append("description", fileDescription);
+    formData.append("file", selectedFile);
+
+    try {
+      const response = await axios.post("http://127.0.0.1:8000/api/accounts/reports/", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      alert("File uploaded successfully.");
+    } catch (error) {
+      alert("Failed to upload file.");
+    }
+  };
+
   return (
     <div className="file-management-container">
       {/* File Upload Section */}
       <div className="file-upload-section">
         <div className="upload-box">
-          <p>Choose a file or drag & drop it here</p>
-          <button>Browse File</button>
-          <p>JPEG, PNG, PDF, and MP4 formats, up to 50 GB</p>
+          <input
+            className="inp_one"
+            type="text"
+            placeholder="Enter file name"
+            value={fileName}
+            onChange={(e) => setFileName(e.target.value)}
+          />
+          <textarea
+            className="inp_one"
+            placeholder="Enter file description"
+            value={fileDescription}
+            onChange={(e) => setFileDescription(e.target.value)}
+          ></textarea>
+          <input
+            type="file"
+            onChange={(e) => setSelectedFile(e.target.files[0])}
+          />
+          <button onClick={handleFileUpload}>Upload File</button>
         </div>
       </div>
 
@@ -66,7 +119,7 @@ const FileManagement = () => {
                     </span>
                   </td>
                   <td>
-                    <i class="ri-more-2-fill ellipsis"></i>
+                    <i className="ri-more-2-fill ellipsis"></i>
                   </td>
                 </tr>
               ))}

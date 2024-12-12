@@ -1,93 +1,74 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom"; // For getting projectid from URL
+import axios from "axios";
 import "./financeManagement.css";
 
 const FinanceManagement = () => {
+  const { projectid } = useParams(); // Get the projectid from URL
+  const [financeData, setFinanceData] = useState({
+    fundDispersed: 0,
+    fundRequired: 0,
+    fundUsed: 0,
+  });
+  const [isLoading, setIsLoading] = useState(true); // Loading state
+
+  useEffect(() => {
+    // Fetch finance data for the specific project
+    const fetchFinanceData = async () => {
+      try {
+        const response = await axios.post("http://127.0.0.1:8000/api/project-finance/", {
+          projectid: projectid, // Send projectid as a parameter
+        });
+        setFinanceData(response.data); // Update state with API response
+      } catch (error) {
+        console.error("Error fetching finance data:", error);
+      } finally {
+        setIsLoading(false); // Stop loading spinner
+      }
+    };
+
+    if (projectid) {
+      fetchFinanceData();
+    }
+  }, [projectid]);
+
   return (
     <div className="dashboard">
-      {/* Header Section */}
-      <div className="header-section">
-        <div className="header-card">
-          <h3>Total Projects</h3>
-          <p className="value">500</p>
-          <p className="change">+25 from last month</p>
-        </div>
-        <div className="header-card">
-          <h3>Total Spending</h3>
-          <p className="value">₹36,672</p>
-          <p className="change">+5 from last month</p>
-        </div>
-        <div className="header-card">
-          <h3>To Achieve</h3>
-          <p className="value">₹291,912</p>
-          <p className="change">+45 from last month</p>
-        </div>
-      </div>
-
-      {/* Work Done & Budget Utilization Section */}
-      <div className="main-content">
-        <div className="work-done">
-          <h3>Work Done</h3>
-          <select className="dropdown">
-            <option>Monthly</option>
-            <option>Weekly</option>
-          </select>
-          <div className="bar-chart">
-            <div className="bar" style={{ height: "30%" }}></div>
-            <div className="bar" style={{ height: "50%" }}></div>
-            <div className="bar" style={{ height: "70%" }}></div>
-            <div className="bar active" style={{ height: "90%" }}>
-              <span>₹22k</span>
+      {isLoading ? (
+        <p>Loading finance data...</p>
+      ) : (
+        <>
+          {/* Header Section */}
+          <div className="header-section">
+            <div className="header-card">
+              <h3>Fund Dispersed</h3>
+              <p className="value">₹{financeData.fundDispersed}</p>
             </div>
-            <div className="bar" style={{ height: "60%" }}></div>
-            <div className="bar" style={{ height: "40%" }}></div>
-          </div>
-        </div>
-        <div className="budget-utilization">
-          <h3>Budget Utilization</h3>
-          <div className="pie-chart">
-            <p className="total-label">Total</p>
-            <p className="total-value">82,62 INR</p>
-            <div className="legend">
-              <p>Daily Expense: 40%</p>
-              <p>Profit: 20%</p>
-              <p>Tax: 15%</p>
+            <div className="header-card">
+              <h3>Fund Required</h3>
+              <p className="value">₹{financeData.fundRequired}</p>
+            </div>
+            <div className="header-card">
+              <h3>Fund Used</h3>
+              <p className="value">₹{financeData.fundUsed}</p>
             </div>
           </div>
-        </div>
-      </div>
 
-      {/* Timeline Section */}
-      <div className="timeline-section">
-        <h3>Expense Timeline</h3>
-        <div className="timeline-item">
-          <div className="timeline-dot"></div>
-          <div>
-            <h4>Title 1</h4>
-            <p>Description of the Process and any key points</p>
+          {/* Additional Sections */}
+          <div className="main-content">
+            {/* Work Done Section */}
+            <div className="work-done">
+              <h3>Work Done</h3>
+              <p>Chart data can be added here based on fund usage.</p>
+            </div>
+            {/* Budget Utilization Section */}
+            <div className="budget-utilization">
+              <h3>Budget Utilization</h3>
+              <p>Budget visualization can be based on the API data.</p>
+            </div>
           </div>
-        </div>
-        <div className="timeline-item active">
-          <div className="timeline-dot"></div>
-          <div>
-            <h4>Title 2</h4>
-            <p>Description of the Process and any key points</p>
-          </div>
-        </div>
-        <div className="timeline-item">
-          <div className="timeline-dot"></div>
-          <div>
-            <h4>Title 3</h4>
-            <p>Description of the Process and any key points</p>
-          </div>
-        </div>
-        <div className="timeline-item">
-          <div className="timeline-dot"></div>
-          <div>
-            <h4>Title 4</h4>
-            <p>Description of the Process and any key points</p>
-          </div>
-        </div>
-      </div>
+        </>
+      )}
     </div>
   );
 };

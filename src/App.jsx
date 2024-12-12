@@ -21,15 +21,38 @@ import ProjectDetails from './pages/ProjectInfo/projectSummary';
 import ProjectBase from './pages/ProjectInfo/ProjectBase';
 import FinanceDashboard from './pages/ProjectInfo/Finance';
 import FundRequisition from './pages/Forms/MainForms/fundrequisation';
+import ProjectCompletionForm from './pages/Forms/MainForms/ProjectCompletion';
+import CreateUser from './pages/Signup/CreateUser';
+import ProjectRevisionForm from './pages/Forms/MainForms/ProjectExtension';
+import FundRequirementForm from './pages/Forms/MainForms/fundrequisation';
+import ExpenditureStatementForm from './pages/Forms/MainForms/QuaterlyExpenditure';
+import CapitalEquipmentExpenditureForm from './pages/Forms/MainForms/CapitalExpenditure';
+import QuarterlyStatusReportForm from './pages/Forms/MainForms/QuaterlyStatusReport';
+import ExtensionOfProjectDurationForm from './pages/Forms/MainForms/ProjectExtension';
+import RevisionOfCostForm from './pages/Forms/MainForms/RevisionofCost';
+import ComputerSoftwareForm from './pages/Forms/MainForms/ComputerSoftware';
+import ManpowerCostForm from './pages/Forms/MainForms/Manpower';
+import EquipmentDetailsForm from './pages/Forms/MainForms/EquipmentDetails';
+import TravelExpenditureForm from './pages/Forms/MainForms/TravelExpenditure';
+import EndorsementForm1 from './pages/Forms/MainForms/Endorsement';
+import NotificationApp from './pages/Notifications/Notifications';
+import AI from './pages/Aibot/AI';
+import ProjectForm from './pages/Screens/addProjectAdmin';
+import ProjectTimeline from './pages/Screens/addTimeLine';
+import AddFund from './pages/Screens/addFund';
+import GanttChart from './components/Utils/Gantt';
+import HelpAndSupport from './pages/Screens/helpandsupport';
+import SecurityPage from './pages/Screens/security';
 function App() {
   const [count, setCount] = useState(0)
+  const [serachState, setSearchState] = useState('')
   
   const router = createBrowserRouter([
     {
       path: '/admin-home',
       element: (
         <>
-          <AdminBase PageContent={<AdminHome />}/>
+          <AdminBase serachState={serachState} setSerachState={setSearchState} PageContent={<AdminHome serachState={serachState} setSerachState={setSearchState} />}/>
         </>
       )
     },
@@ -65,11 +88,28 @@ function App() {
         </>
       )
     },
+    
     {
       path: '/addProposal',
       element: (
         <>
-          <ProjectProposalForm />
+         <InvestBase PageContent={<ProjectProposalForm />} />
+        </>
+      )
+    },
+    {
+      path: '/helpadmin',
+      element: (
+        <>
+         <AdminBase PageContent={<HelpAndSupport />} />
+        </>
+      )
+    },
+    {
+      path: '/helpinvest',
+      element: (
+        <>
+         <InvestBase PageContent={<HelpAndSupport />} />
         </>
       )
     },
@@ -77,15 +117,59 @@ function App() {
       path: '/viewProposal',
       element: (
         <>
-          <ViewProjectProposalForm />
+          <AdminBase PageContent={<ViewProjectProposalForm />} />
+        </>
+      )
+    },
+    {
+      path: '/securityinvest',
+      element: (
+        <>
+          <InvestBase PageContent={<SecurityPage />} />
+        </>
+      )
+    },
+    {
+      path: '/securityadmin',
+      element: (
+        <>
+          <AdminBase PageContent={<SecurityPage />} />
         </>
       )
     },
 
     {
+      path: '/aichat',
+      element: (
+        <>
+          <AI />
+        </>
+      )
+    },
+    // {
+    //   path: '/addInvest',
+    //   element: (
+    //     <>
+    //       <Signup/>
+    //     </>
+    //   )
+    // },
+    {
+      path: '/ganttChat/:projectid',
+      element: (
+        <GanttChart />
+      )
+    },
+    {
       path: '/',
       element: (
         <Signup />
+      )
+    },
+    {
+      path: '/createAccount',
+      element: (
+        <CreateUser />
       )
     },
     {
@@ -111,10 +195,42 @@ function App() {
       )
     },
     {
-      path: '/fundrequestion',
+      path: '/fundrequestion/:projectid/',
       element: (
         <>
-          <ProjectBase PageContent={<FundRequisition />} />
+          <ProjectBase PageContent={<FundRequirementForm />} />
+        </>
+      )
+    },
+    {
+      path: '/proCompletion/:projectid/',
+      element: (
+        <>
+          <ProjectBase PageContent={<ProjectCompletionForm />} />
+        </>
+      )
+    },
+    {
+      path: '/quaterlyexpenditure/:projectid/',
+      element: (
+        <>
+          <ProjectBase PageContent={<ExpenditureStatementForm />} />
+        </>
+      )
+    },
+    {
+      path: '/capitalexpenditure/:projectid/',
+      element: (
+        <>
+          <ProjectBase PageContent={<CapitalEquipmentExpenditureForm />} />
+        </>
+      )
+    },
+    {
+      path: '/quaterlystatus/:projectid/',
+      element: (
+        <>
+          <ProjectBase PageContent={<QuarterlyStatusReportForm />} />
         </>
       )
     },
@@ -127,7 +243,15 @@ function App() {
       )
     },
     {
-      path: '/askAnything',
+      path: '/askAnythingadmin',
+      element: (
+        <>
+          <AdminBase PageContent={<AskAnything />} />
+        </>
+      )
+    },
+    {
+      path: '/askAnythinginvest',
       element: (
         <>
           <InvestBase PageContent={<AskAnything />} />
@@ -142,6 +266,104 @@ function App() {
         </>
       )
     },
+    {
+      path: '/project-extension/:projectid',
+      element: (
+        <>
+          <ProjectBase PageContent={<ExtensionOfProjectDurationForm />} />
+        </>
+      )
+    },
+    {
+      path: '/cost-extension/:projectid',
+      element: (
+        <>
+          <ProjectBase PageContent={<RevisionOfCostForm />} />
+        </>
+      )
+    },
+    {
+      path: '/computersoftware/:projectid',
+      element: (
+        <>
+          <ProjectBase PageContent={<ComputerSoftwareForm />} />
+        </>
+      )
+    },
+    {
+      path: '/manpower/:projectid',
+      element: (
+        <>
+          <ProjectBase PageContent={<ManpowerCostForm />} />
+        </>
+      )
+    },
+    {
+      path: '/travelexpenditure/:projectid',
+      element: (
+        <>
+          <ProjectBase PageContent={<TravelExpenditureForm />} />
+        </>
+      )
+    },
+    {
+      path: '/endorsement/:projectid',
+      element: (
+        <>
+          <ProjectBase PageContent={<EndorsementForm1 />} />
+        </>
+      )
+    },
+    {
+      path: '/otherequipment/:projectid',
+      element: (
+        <>
+          <ProjectBase PageContent={<EquipmentDetailsForm />} />
+        </>
+      )
+    },
+    {
+      path: '/notifications/:projectid',
+      element: (
+        <>
+          <ProjectBase PageContent={<NotificationApp />} />
+        </>
+      )
+    },
+
+
+
+
+
+
+
+
+    {
+      path: '/addProjectAdmin',
+      element: (
+        <>
+          <AdminBase PageContent={<ProjectForm />} />
+        </>
+      )
+    },
+    {
+      path: '/addTimeLine',
+      element: (
+        <>
+          <AdminBase PageContent={<ProjectTimeline />} />
+        </>
+      )
+    },
+    {
+      path: '/addFunds',
+      element: (
+        <>
+          <AdminBase PageContent={<AddFund />} />
+        </>
+      )
+    },
+
+
   ])
 
   return (

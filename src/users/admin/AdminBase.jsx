@@ -11,7 +11,7 @@ import './home.css'
 import AdminSidebar from './admin_Sidebar'
 
 
-function AdminBase({PageContent}) {
+function AdminBase({PageContent, setSearchState, searchState}) {
   return (
     <div className="container">
         <div className="home_content">
@@ -19,8 +19,8 @@ function AdminBase({PageContent}) {
                 <AdminSidebar />
             </div>
             <div className="home_right">
-              <Topbar />
-              {PageContent}
+            <Topbar searchState={searchState} setSearchState={setSearchState} />
+            {PageContent}
             </div>
         </div>
     </div>

@@ -10,17 +10,18 @@ body, html, .container {
 
 /* Full viewport height container */
 .container_ask {
+  /* margin-top: 100px; */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  height: 100vh;
+  height: 86vh;
   background-color: #f6f6fc;
   padding: 20px;
   box-sizing: border-box;
   font-family: Arial, sans-serif;
   /* Remove the max-width constraint */
   /* max-width: 1200px; */
-  margin: 0 auto;
+  margin: 100px 0 0 0;
 }
 
 /* Header section */
@@ -51,9 +52,10 @@ body, html, .container {
 /* Cards Section */
 .cards {
   display: flex;
-  overflow-x: auto;
+  /* overflow-y: scroll; */
   margin-bottom: 30px;
   justify-content: center;
+  gap: 10px;
 }
 
 .card {
@@ -61,9 +63,11 @@ body, html, .container {
   padding: 25px;
   border-radius: 12px;
   width: 230px;
+  height: 100px;
   margin-right: 30px;
   margin-bottom: 10px;
   text-align: center;
+  color: #fff;
   cursor: pointer;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s ease;
@@ -130,6 +134,8 @@ body, html, .container {
   margin-top: auto; /* This will push the typing box to the bottom */
   text-align: center;
   width: 95%;
+  position: absolute;
+  bottom: 30px;
 }
   .h { 
       display: flex; 
@@ -157,6 +163,7 @@ body, html, .container {
   /* background-color: grey; */
 }
 .chat-user-msg {
+  max-width: 500px; 
   align-self: end;
   background-color: #4c52ff;
   margin: 10px;
@@ -168,6 +175,7 @@ body, html, .container {
 
 }
 .chat-user-bot {
+  max-width: 500px;
   align-self: flex-start;
   border-radius: 25px;
   background-color: #4c52ff;
@@ -178,7 +186,18 @@ body, html, .container {
   color: #f8f8ff;
 }
 
+.chat {
+  overflow-y: scroll;
+}
 
+
+.card {
+  width: 100%;
+  margin-right: 0;
+  margin-bottom: 20px;
+  height: auto;
+  color: #fff;
+}
 
 /* Responsive Design */
 @media (max-width: 768px) {

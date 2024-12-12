@@ -1,5 +1,7 @@
-import React from "react";
 import './style.css'
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom"; // For getting projectid from URL
+import axios from "axios";
 import {
   BarChart,
   Bar,
@@ -55,27 +57,31 @@ const Title = styled.h3`
 `;
 
 // Dummy Data
-const barData = [
-  { name: "Jan", value: 40 },
-  { name: "Feb", value: 55 },
-  { name: "Mar", value: 70 },
-  { name: "Apr", value: 50 },
-  { name: "May", value: 80 },
-  { name: "Jun", value: 60 },
-  { name: "Jul", value: 70 },
-  { name: "Aug", value: 90 },
-  { name: "Sep", value: 60 },
-  { name: "Oct", value: 50 },
-  { name: "Nov", value: 40 },
-  { name: "Dec", value: 60 },
-];
+// const barData = [
+//   { name: "Jan", value: 40 },
+//   { name: "Feb", value: 55 },
+//   { name: "Mar", value: 70 },
+//   { name: "Apr", value: 50 },
+//   { name: "May", value: 80 },
+//   { name: "Jun", value: 60 },
+//   { name: "Jul", value: 70 },
+//   { name: "Aug", value: 90 },
+//   { name: "Sep", value: 60 },
+//   { name: "Oct", value: 50 },
+//   { name: "Nov", value: 40 },
+//   { name: "Dec", value: 60 },
+// ];
+// const barData = Object.entries(financeData.fundFormData || {}).map(([key, value]) => ({
+//   name: `Form ${key}`,
+//   value: value,
+// }));
 
-const pieData = [
-  { name: "Daily Expenses", value: 40, color: "#ffafcc" },
-  { name: "Rent", value: 20, color: "#bde0fe" },
-  { name: "Food", value: 25, color: "#a2d2ff" },
-  { name: "Tax", value: 15, color: "#cdb4db" },
-];
+// const pieData = [
+//   { name: "Daily Expenses", value: 40, color: "#ffafcc" },
+//   { name: "Rent", value: 20, color: "#bde0fe" },
+//   { name: "Food", value: 25, color: "#a2d2ff" },
+//   { name: "Tax", value: 15, color: "#cdb4db" },
+// ];
 
 const TimelineSteps = [
   { title: "Title 1", description: "Description of the Process and any key points" },
@@ -86,6 +92,45 @@ const TimelineSteps = [
 
 // Main React Component
 const FinanceDashboard = () => {
+  const { projectid } = useParams(); // Get the projectid from URL
+  const [financeData, setFinanceData] = useState({
+    fundDispersed: 0,
+    fundRequired: 0,
+    fundUsed: 0,
+  });
+  const [isLoading, setIsLoading] = useState(true); // Loading state
+
+  useEffect(() => {
+    // Fetch finance data for the specific project
+    const fetchFinanceData = async () => {
+      try {
+        const response = await axios.post("http://127.0.0.1:8000/api/accounts/projectfinance/", {
+          projectid: projectid, 
+        });
+        setFinanceData(response.data); // Update state with API response
+      } catch (error) {
+        console.error("Error fetching finance data:", error);
+      } finally {
+        setIsLoading(false); // Stop loading spinner
+      }
+    };
+
+    if (projectid) {
+      fetchFinanceData();
+    }
+  }, [projectid]);
+  const pieData = Object.entries(financeData.piechartdata || {}).map(([key, value]) => ({
+    name: key,
+    value: value,
+    color: `#${Math.floor(Math.random() * 16777215).toString(16)}`, // Generate random color
+  }));
+
+  const barData = Object.entries(financeData.fundFormData || {}).map(([key, value]) => ({
+    name: `Form ${key}`,
+    value: value,
+  }));
+  
+  
   return (
     <div className="finance_container">
 
@@ -93,20 +138,20 @@ const FinanceDashboard = () => {
     <DashboardContainer>
       {/* Top Metrics */}
       <Card>
-        <h2>Total Projects</h2>
-        <h1>500</h1>
+        <h2>Fund Dispersed</h2>
+        <h1>₹{financeData.fundDispersed}</h1>
         <p>+12 from last month</p>
       </Card>
 
       <Card>
-        <h2>Total Spending</h2>
-        <h1>₹36,672</h1>
+        <h2>Fund Required</h2>
+        <h1>₹{financeData.fundRequired}</h1>
         <p>+5% from last month</p>
       </Card>
 
-      <Card>
-        <h2>To Achieve</h2>
-        <h1>₹291,912</h1>
+      <Card> 
+        <h2>Fund Used</h2>
+        <h1>₹{financeData.fundUsed}</h1>
         <p>+8% from last month</p>
       </Card>
 
